@@ -1,0 +1,12 @@
+Metadata-Version: 2.1
+Name: paint-by-numbers
+Version: 0.0.6
+Summary: Paint By Numbers Creator
+Author: Michael Pienaar
+Author-email: mpienaar9@gmail.com
+License: UNKNOWN
+Keywords: python,art,painting
+Platform: UNKNOWN
+
+Convert any image into a printable paint by numbers.
+
