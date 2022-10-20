@@ -1,3 +1,3 @@
 # Paint by Numbers Project
 
-Testing git for Paint by Numbers project
+This package can be used to convert any image into a printable Paint-by-numbers.
