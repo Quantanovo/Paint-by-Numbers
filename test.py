@@ -1,5 +1,5 @@
 import matplotlib.pyplot as plt
-from PaintByNumbers.paint_by_numbers import PaintByNumbers
+from pbn.paint_by_numbers import PaintByNumbers
 
 
 IMAGE_PATHS = ["still_life", "cobra", "parrots", "beach_landscape", "madiba"]
