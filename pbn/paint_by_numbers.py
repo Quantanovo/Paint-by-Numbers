@@ -27,7 +27,7 @@ class PaintByNumbers:
             self.height, self.width, self.colors = self.img_array.shape
             print(self.height, self.width)
         median_img = cv2.medianBlur(self.img_array, 15)
-        self.processed_img = cv2.bilateralFilter(cv2.bilateralFilter(cv2.bilateralFilter(median_img, 30, 50, 50), 60, 50, 75), 90, 50, 50)
+        self.processed_img = cv2.bilateralFilter(cv2.bilateralFilter(median_img, 30, 30, 30), 60, 30, 30)
         plt.figure(figsize=(30,20))
         plt.imshow(self.processed_img)
         plt.margins(0,0)
@@ -117,7 +117,7 @@ class PaintByNumbers:
         plt.imshow(self.outlined_img, cmap='binary')
         for key in poly_dict:
             center = polylabel([poly_dict[key]], precision=0.1, with_distance=True)
-            if center[1] < 7.0:
+            if center[1] < 5.0:
                 plt.annotate(text=f"{labels_2d[poly_dict[key][0][0], poly_dict[key][0][1]]+1}",
                             xy = (center[0][1], center[0][0]),
                             xytext=(center[0][1]+35, center[0][0]-35),
@@ -126,10 +126,10 @@ class PaintByNumbers:
                             verticalalignment='center',
                             color="black",
                             alpha=0.6,
-                            fontsize=6.0,
+                            fontsize=5.0,
                             bbox=dict(boxstyle='circle', facecolor='white', edgecolor='black', alpha=0.6))
             else:
-                plt.text(x=center[0][1], y=center[0][0], s=f"{labels_2d[poly_dict[key][0][0], poly_dict[key][0][1]]+1}", horizontalalignment='center', verticalalignment='center', color="black", alpha=0.6, fontsize=6.0)
+                plt.text(x=center[0][1], y=center[0][0], s=f"{labels_2d[poly_dict[key][0][0], poly_dict[key][0][1]]+1}", horizontalalignment='center', verticalalignment='center', color="black", alpha=0.6, fontsize=5.0)
         plt.margins(0,0)
         plt.gca().xaxis.set_major_locator(plt.NullLocator())
         plt.gca().yaxis.set_major_locator(plt.NullLocator())

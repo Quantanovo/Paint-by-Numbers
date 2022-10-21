@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 from pbn.paint_by_numbers import PaintByNumbers
 
 
-IMAGE_PATHS = ["still_life"]
+IMAGE_PATHS = ["still_life", "beach_landscape", "madiba", "cobra", "toucan"]
 
 for image in IMAGE_PATHS:
     still_life_obj = PaintByNumbers(img_path=f"./images/{image}.jpg", num_of_colors=12)
