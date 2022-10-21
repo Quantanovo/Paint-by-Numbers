@@ -28,6 +28,13 @@ class PaintByNumbers:
             print(self.height, self.width)
         median_img = cv2.medianBlur(self.img_array, 15)
         self.processed_img = cv2.bilateralFilter(cv2.bilateralFilter(cv2.bilateralFilter(median_img, 30, 50, 50), 60, 50, 75), 90, 50, 50)
+        plt.figure(figsize=(30,20))
+        plt.imshow(self.processed_img)
+        plt.margins(0,0)
+        plt.gca().xaxis.set_major_locator(plt.NullLocator())
+        plt.gca().yaxis.set_major_locator(plt.NullLocator())
+        plt.savefig(f"./results/{self.filename}_processed.{self.extension}", format=self.extension, edgecolor="black", bbox_inches = 'tight', pad_inches = 0)
+        plt.show()
         return self.processed_img
 
     def quantise_image(self, img_array):
@@ -36,6 +43,13 @@ class PaintByNumbers:
         self.labelled_array = cluster_model.fit_predict(img_2d)
         self.color_of_labels = cluster_model.cluster_centers_.round(0).astype(np.uint8)
         self.quantised_img = self.color_of_labels[self.labelled_array].reshape(self.height, self.width, self.colors)
+        plt.figure(figsize=(30,20))
+        plt.imshow(self.quantised_img)
+        plt.margins(0,0)
+        plt.gca().xaxis.set_major_locator(plt.NullLocator())
+        plt.gca().yaxis.set_major_locator(plt.NullLocator())
+        plt.savefig(f"./results/{self.filename}_quantised.{self.extension}", format=self.extension, edgecolor="black", bbox_inches = 'tight', pad_inches = 0)
+        plt.show()
         return self.quantised_img
 
     def outline_and_label_image(self):
@@ -119,7 +133,7 @@ class PaintByNumbers:
         plt.margins(0,0)
         plt.gca().xaxis.set_major_locator(plt.NullLocator())
         plt.gca().yaxis.set_major_locator(plt.NullLocator())
-        plt.savefig(f"./results/pbn_{self.filename}.{self.extension}", format=self.extension, edgecolor="black", bbox_inches = 'tight', pad_inches = 0)
+        plt.savefig(f"./results/{self.filename}_pbn.{self.extension}", format=self.extension, edgecolor="black", bbox_inches = 'tight', pad_inches = 0)
         plt.show()
         fig, ax = plt.subplots(1, self.num_of_colors ,figsize=(2*self.num_of_colors,2))
         for i in range(1, self.num_of_colors+1):
@@ -130,7 +144,7 @@ class PaintByNumbers:
         plt.margins(0,0)
         plt.gca().xaxis.set_major_locator(plt.NullLocator())
         plt.gca().yaxis.set_major_locator(plt.NullLocator())
-        plt.savefig(f"./results/colors_{self.filename}.{self.extension}", format=self.extension, edgecolor="black", bbox_inches = 'tight', pad_inches = 0)
+        plt.savefig(f"./results/{self.filename}_colors.{self.extension}", format=self.extension, edgecolor="black", bbox_inches = 'tight', pad_inches = 0)
         plt.show()
         return self.outlined_img
 

@@ -1,6 +1,6 @@
 from setuptools import setup
 
-VERSION = '0.0.7' 
+VERSION = '0.0.8' 
 DESCRIPTION = 'Paint By Numbers Creator'
 LONG_DESCRIPTION = 'Convert any image into a printable paint by numbers.'
 
